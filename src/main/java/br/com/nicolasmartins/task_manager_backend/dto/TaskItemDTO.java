@@ -1,5 +1,6 @@
 package br.com.nicolasmartins.task_manager_backend.dto;
 
+import br.com.nicolasmartins.task_manager_backend.model.TaskItem;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -9,6 +10,9 @@ public class TaskItemDTO {
 
     @NotBlank(message = "Titulo precisa ser definido") //Title cannot be blank
     private String title;
+
+    @NotNull(message = "Status precisa ser definido") //Status must be specified
+    private TaskItem.Status status;
 
     @NotNull(message = "Status precisa ser especificado") //Status must be specified
     private Boolean priority;
@@ -29,6 +33,14 @@ public class TaskItemDTO {
 
     public void setTitle(@NotBlank(message = "Titulo precisa ser definido") String title /*Title cannot be blank*/ ) {
         this.title = title;
+    }
+
+    public @NotNull(message = "Status precisa ser definido") TaskItem.Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(@NotNull(message = "Status precisa ser definido") TaskItem.Status status) {
+        this.status = status;
     }
 
     public @NotNull(message = "Status precisa ser especificado") Boolean getPriority() {
