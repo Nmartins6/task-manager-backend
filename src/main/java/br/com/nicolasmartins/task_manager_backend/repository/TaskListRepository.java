@@ -1,0 +1,7 @@
+package br.com.nicolasmartins.task_manager_backend.repository;
+
+import br.com.nicolasmartins.task_manager_backend.model.TaskList;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TaskListRepository extends JpaRepository<TaskList, Long> {
+}
