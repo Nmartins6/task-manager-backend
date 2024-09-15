@@ -44,6 +44,7 @@ public class TaskItemController {
 
     @PostMapping
     public ResponseEntity<TaskItemDTO> createTaskItem(@Valid @RequestBody TaskItemDTO taskItemDTO) {
+
         Optional<TaskList> taskList = taskListService.findById(taskItemDTO.getTaskListId());
         if (!taskList.isPresent()) {
             return ResponseEntity.badRequest().build();
@@ -86,6 +87,7 @@ public class TaskItemController {
         if (taskItemDTO.getTaskListId() != null) {
             TaskList taskList = taskListService.findById(taskItemDTO.getTaskListId())
                     .orElseThrow(() -> new IllegalArgumentException("TaskList não encontrado"));
+            taskItem.setTaskList(taskList);
         } else {
             throw new IllegalArgumentException("TaskListId não pode ser null");
         }
